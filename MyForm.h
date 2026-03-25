@@ -37,6 +37,11 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 
 	protected:
 
@@ -45,7 +50,7 @@ namespace Project1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 
 #pragma region Windows Form Designer generated code
@@ -60,6 +65,11 @@ namespace Project1 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -96,6 +106,10 @@ namespace Project1 {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->Column1,
+					this->Column2, this->Column3, this->Column4, this->Column5
+			});
 			this->dataGridView1->Location = System::Drawing::Point(327, 76);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -107,10 +121,48 @@ namespace Project1 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->ForeColor = System::Drawing::Color::Red;
 			this->label1->Location = System::Drawing::Point(327, 428);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 20);
+			this->label1->Size = System::Drawing::Size(0, 25);
 			this->label1->TabIndex = 3;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Column1";
+			this->Column1->MinimumWidth = 8;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 150;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Column2";
+			this->Column2->MinimumWidth = 8;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 150;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Column3";
+			this->Column3->MinimumWidth = 8;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 150;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Column4";
+			this->Column4->MinimumWidth = 8;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 150;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Column5";
+			this->Column5->MinimumWidth = 8;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 150;
 			// 
 			// MyForm
 			// 
@@ -140,12 +192,12 @@ namespace Project1 {
 
 		if (comboBox1->SelectedIndex == 0) // Заповнити масив
 		{
-			for (int i = 0; i < 5; i++) 
+			for (int i = 0; i < 5; i++)
 				mas1[i] = rnd->Next(1, 20);
 
 			dataGridView1->ColumnCount = 5;
 			dataGridView1->RowCount = 1;
-			for (int i = 0; i < 5; i++) 
+			for (int i = 0; i < 5; i++)
 				dataGridView1->Rows[i]->Cells[0]->Value = mas1[i];
 		}
 		if (comboBox1->SelectedIndex == 1) // Сума
@@ -155,7 +207,7 @@ namespace Project1 {
 			{
 				sum += mas1[i];
 			}
-			label1->Text = "Сума елементів масиву" + Convert::ToString(sum);
+			MessageBox::Show("Сума елементів масиву" + Convert::ToString(sum));
 
 		}
 
@@ -167,8 +219,8 @@ namespace Project1 {
 				if (mas1[i] < min)
 					min = mas1[i];
 			}
-		label1->Text = "Найменший елемент масиву" + Convert::ToString(min);
-			
+			label1->Text = "Найменший елемент масиву" + Convert::ToString(min);
+
 		}
 
 		if (comboBox1->SelectedIndex == 3) // Максимум
@@ -187,17 +239,17 @@ namespace Project1 {
 			int p = 0, n = 0;
 			for (int i = 0; i < 5; i++)
 			{
-				if (mas1[i] % 2 = 0) p++;
-				else n++;	
+				if (mas1[i] % 2 == 0) p++;
+				else n++;
 			}
-			label1->Text = "Парні" + Convert::ToString(p)+/n"Непарні" + Convert::ToString(n);
+			label1->Text = "Парні" + Convert::ToString(p) + "/nНепарні" + Convert::ToString(n);
 		}
 		if (comboBox1->SelectedIndex == 5) // Заповнити матрицю
 		{
 			for (int i = 0; i < 5; i++)
 				for (int j = 0; j < 5; j++)
 					matrix[i][j] = rnd->Next(1, 20);
-			
+
 			dataGridView1->ColumnCount = 5;
 			dataGridView1->RowCount = 5;
 			for (int i = 0; i < 5; i++)
@@ -209,7 +261,7 @@ namespace Project1 {
 			for (int i = 0; i < 5; i++)
 			{
 				int rowSum = 0;
-				for (int j = 0; j < 5; j++) 
+				for (int j = 0; j < 5; j++)
 					rowSum += matrix[i][j];
 				MessageBox::Show("Сума рядка " + i + " = " + rowSum.ToString());
 			}
@@ -218,71 +270,80 @@ namespace Project1 {
 		if (comboBox1->SelectedIndex == 7) // Діагональ
 		{
 			int sumD = 0;
-
-		}
-
-		if (comboBox1->SelectedIndex == 8) // Транспонування
-		{
 			for (int i = 0; i < 5; i++)
-				for (int j = i + 1; j < 5; j++)
-				{
-				// обмін елементів
-				
-				}
-
-			dataGridView1->ColumnCount = 5;
-			dataGridView1->RowCount = 5;
-			for (int i = 0; i < 5; i++)
-				for (int j = 0; j < 5; j++)
-					dataGridView1->Rows[i]->Cells[j]->Value = matrix[i][j];
-		}
-
-		if (comboBox1->SelectedIndex == 9) // Сортування обміном
-		{
-			// Сортування методом обміну 
-			for (int i = 0; i < 5 - 1; i++)
 			{
-				for (int j = 0; j < 5 - i - 1; j++)
+				int RowSum = 0;
+				for (int j = 0; j < 5; j++)
 				{
-					if (mas1[j] > mas1[j + 1])
+					RowSum += matrix[i][j];
+					if (i == j) sumD += matrix[i][j];
+				}
+				label1->Text = "Сума діагоналі" + Convert::ToString(sumD);
+			}
+
+			if (comboBox1->SelectedIndex == 8) // Транспонування
+			{
+				for (int i = 0; i < 5; i++)
+					for (int j = i + 1; j < 5; j++)
 					{
-						int temp = mas1[j];
-						mas1[j] = mas1[j + 1];
-						mas1[j + 1] = temp;
+						// обмін елементів
+
+					}
+
+				dataGridView1->ColumnCount = 5;
+				dataGridView1->RowCount = 5;
+				for (int i = 0; i < 5; i++)
+					for (int j = 0; j < 5; j++)
+						dataGridView1->Rows[i]->Cells[j]->Value = matrix[i][j];
+			}
+
+			if (comboBox1->SelectedIndex == 9) // Сортування обміном
+			{
+				// Сортування методом обміну 
+				for (int i = 0; i < 5 - 1; i++)
+				{
+					for (int j = 0; j < 5 - i - 1; j++)
+					{
+						if (mas1[j] > mas1[j + 1])
+						{
+							int temp = mas1[j];
+							mas1[j] = mas1[j + 1];
+							mas1[j + 1] = temp;
+						}
 					}
 				}
+
+				// Вивід у DataGridView
+				dataGridView1->ColumnCount = 5;
+				dataGridView1->RowCount = 1;
+				for (int i = 0; i < 5; i++)
+					dataGridView1->Rows[0]->Cells[i]->Value = mas1[i];
 			}
 
-			// Вивід у DataGridView
-			dataGridView1->ColumnCount = 5;
-			dataGridView1->RowCount = 1;
-			for (int i = 0; i < 5; i++)
-				dataGridView1->Rows[0]->Cells[i]->Value = mas1[i];
-		}
-
-		if (comboBox1->SelectedIndex == 10) // Сортування екстремальних
-		{
-			// Сортування методом вибору (екстремальних елементів)
-			for (int i = 0; i < 5 - 1; i++)
+			if (comboBox1->SelectedIndex == 10) // Сортування екстремальних
 			{
-				int minIndex = i;
-				for (int j = i + 1; j < 5; j++)
-					if (mas1[j] < mas1[minIndex])
-						minIndex = j;
+				// Сортування методом вибору (екстремальних елементів)
+				for (int i = 0; i < 5 - 1; i++)
+				{
+					int minIndex = i;
+					for (int j = i + 1; j < 5; j++)
+						if (mas1[j] < mas1[minIndex])
+							minIndex = j;
 
-				// обмін
-				int temp = mas1[i];
-				mas1[i] = mas1[minIndex];
-				mas1[minIndex] = temp;
+					// обмін
+					int temp = mas1[i];
+					mas1[i] = mas1[minIndex];
+					mas1[minIndex] = temp;
+				}
+
+				// Вивід у DataGridView
+				dataGridView1->ColumnCount = 5;
+				dataGridView1->RowCount = 1;
+				for (int i = 0; i < 5; i++)
+					dataGridView1->Rows[0]->Cells[i]->Value = mas1[i];
 			}
 
-			// Вивід у DataGridView
-			dataGridView1->ColumnCount = 5;
-			dataGridView1->RowCount = 1;
-			for (int i = 0; i < 5; i++)
-				dataGridView1->Rows[0]->Cells[i]->Value = mas1[i];
-		}
-	
+
 		}
 		};
 

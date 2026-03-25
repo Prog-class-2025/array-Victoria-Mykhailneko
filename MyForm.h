@@ -282,7 +282,11 @@ namespace Project1 {
 			for (int i = 0; i < 5; i++)
 				dataGridView1->Rows[0]->Cells[i]->Value = mas1[i];
 		}
-	}
 	
-	};
-}
+		}
+		};
+
+	
+
+
+

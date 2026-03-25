@@ -184,7 +184,13 @@ namespace Project1 {
 
 		if (comboBox1->SelectedIndex == 4) // Парні/непарні
 		{
-			//TODO: Вивести кількість парних та непарних елементів масиву
+			int p = 0, n = 0;
+			for (int i = 0; i < 5; i++)
+			{
+				if (mas1[i] % 2 = 0) p++;
+				else n++;	
+			}
+			label1->Text = "Парні" + Convert::ToString(p)+/n"Непарні" + Convert::ToString(n);
 		}
 		if (comboBox1->SelectedIndex == 5) // Заповнити матрицю
 		{
@@ -211,7 +217,8 @@ namespace Project1 {
 
 		if (comboBox1->SelectedIndex == 7) // Діагональ
 		{
-			//TODO: Вивести елементи головної діагоналі матриці
+			int sumD = 0;
+
 		}
 
 		if (comboBox1->SelectedIndex == 8) // Транспонування

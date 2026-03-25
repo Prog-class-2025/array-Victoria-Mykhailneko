@@ -36,6 +36,7 @@ namespace Project1 {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Label^ label1;
 
 	protected:
 
@@ -58,6 +59,7 @@ namespace Project1 {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -73,17 +75,19 @@ namespace Project1 {
 				L"Заповнити масив ", L"Сума ", L"Мінімум", L"Максимум    ",
 					L"Парні/непарні", L"Заповнити матрицю  ", L"Сума рядків", L"Діагональ", L"Транспонування", L"Сортування обміном  ", L"Сортування екстремальних"
 			});
-			this->comboBox1->Location = System::Drawing::Point(36, 237);
+			this->comboBox1->Location = System::Drawing::Point(40, 296);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(176, 33);
+			this->comboBox1->Size = System::Drawing::Size(198, 37);
 			this->comboBox1->TabIndex = 0;
 			this->comboBox1->Text = L"Завдання";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(468, 310);
+			this->button1->Location = System::Drawing::Point(526, 388);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(142, 65);
+			this->button1->Size = System::Drawing::Size(160, 81);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Виконати ";
 			this->button1->UseVisualStyleBackColor = true;
@@ -92,28 +96,40 @@ namespace Project1 {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(291, 61);
+			this->dataGridView1->Location = System::Drawing::Point(327, 76);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 40;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(538, 182);
+			this->dataGridView1->Size = System::Drawing::Size(605, 228);
 			this->dataGridView1->TabIndex = 2;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(327, 428);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(0, 20);
+			this->label1->TabIndex = 3;
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->ClientSize = System::Drawing::Size(934, 428);
+			this->ClientSize = System::Drawing::Size(1051, 535);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
+			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 
@@ -130,16 +146,28 @@ namespace Project1 {
 			dataGridView1->ColumnCount = 5;
 			dataGridView1->RowCount = 1;
 			for (int i = 0; i < 5; i++) 
-				dataGridView1->Rows[0]->Cells[i]->Value = mas1[i];
+				dataGridView1->Rows[i]->Cells[0]->Value = mas1[i];
 		}
 		if (comboBox1->SelectedIndex == 1) // Сума
 		{
-			//TODO: Сума елементів масиву
+			int sum = 0;
+			for (int i = 0; i < 5; i++)
+			{
+				sum += mas1[i];
+			}
+			label1->Text = "Сума елементів масиву" + Convert::ToString(sum);
+
 		}
 
 		if (comboBox1->SelectedIndex == 2) // Мінімум
 		{
-		//TODO: Мінімальний елемент масиву
+			int min = mas1[0];
+			for (int i = 1; i < 5; i++)
+			{
+				if (mas1[i] < min)
+					min = mas1[i];
+			}
+		label1->Text = "Найменший елемент масиву" + Convert::ToString(min);
 			
 		}
 
